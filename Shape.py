@@ -19,7 +19,7 @@ import math
 
 class Shape:
     def calculate_area(self):
-        pass
+        return 0
 
     def calculate_perimeter(self):
         pass
@@ -43,14 +43,34 @@ class Circle(Shape):
         self.radius = radius
 
     def calculate_area(self):
-        return math.pi * self.radius ** 2
+        return round(math.pi * self.radius ** 2, 2)
 
     def calculate_perimeter(self):
         return 2 * math.pi * self.radius
 
+class Triangle(Shape):
+    def __init__(self, base, height):
+        self.base = base
+        self.height = height
+
+    def calculate_area(self):
+        return self.base * self.height / 2
+
+
 
 # Тесты
 # Тесты
+
+print("Тест 1")
+shapes = [Shape(), Circle(5), Rectangle(4, 6), Triangle(3, 8)]
+
+for shape in shapes:
+    area = shape.calculate_area()
+    print(f"Area of {type(shape).__name__}: {area}")
+
+print("")
+print("Тест 2")
+
 rectangle = Rectangle(5, 7)
 assert rectangle.calculate_area() == 35
 assert rectangle.calculate_perimeter() == 24
